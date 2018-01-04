@@ -94,20 +94,15 @@ hr{
 #headerwrap1{
     /*background: url(lg.jpg) no-repeat center top;*/
     background: #e5fffd;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin: 40px auto 20px;
+    padding-right: 50px;
+    padding-left: 30px;
     text-align: right;
-    text-decoration: dotted;
-    background-origin: border-box;
-    backface-visibility: hidden;
+
     background-position: center center;
-    min-height: 400px;
+
+    min-height: 10px;
     width: 100%;
-
-    background-size: 100%;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
 
 }
 
@@ -145,40 +140,33 @@ header1 h4{
 
 
 table {
-    font-family: Rubik, serif;
-    border: 1px solid white;
+    border-collapse: collapse;
+    line-height: 3;
+    font-family: "Lato", "Mistral", sans-serif;
+    background:  radial-gradient(farthest-corner at 50% 50%, #f3fff6, rgba(219, 248, 209, 0.7));
+    color: #0C213B;
 }
 
 th {
-    text-align: left;
-    border: 100px solid grey;
-    padding: 10px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #61e2e2;
 }
 
 td {
-    text-align: left;
-    border: 1px solid grey;
-    padding: 5px;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 5px 7px;
+    border: 1px solid #A9E2CC;
 }
 
-table {
-  border-collapse: collapse;
-  line-height: 3;
-  font-family: "Lato", "Mistral", sans-serif;
-  background:  radial-gradient(farthest-corner at 50% 50%, #f3fff6, rgba(219, 248, 209, 0.7));
-  color: #0C213B;
+table td a,h4{
+   color: darkblue;
+   font-family: "Lato", "Mistral", sans-serif;
 }
 
-th {
-  padding: 20px;
-  border: 1px solid #61e2e2;
-}
+table tr a{display: block; width: 100%; height: 100%}
 
-td {
-  font-size: 0.8em;
-  padding: 5px 7px;
-  border: 1px solid #A9E2CC;
-}
 
 caption{
     padding: 10px;

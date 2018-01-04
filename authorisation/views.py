@@ -22,7 +22,7 @@ class LoginFormView(FormView):
     template_name = "login.html"
 
     # В случае успеха перенаправим на главную.
-    success_url = "/runs/"
+    success_url = "/login"
 
     def form_valid(self, form):
         # Получаем объект пользователя на основе введённых в форму данных.

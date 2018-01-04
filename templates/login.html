@@ -1,11 +1,8 @@
 {% extends "base.html" %}
 
 {% block body1 %}
-{#<div class="container">#}
-{#    <div class="row">#}
-    <div class="col-lg-3 col-lg-offset-5 centered">
+    <div class="col-xs-4 col-xs-offset-4 centered">
             <div id="headerwrap1">
-                <div class="col-lg-11">
                 <br><br>
                 <form action="" method="post">
                    {% csrf_token %}
@@ -21,8 +18,8 @@
                     <button>Регистрация</button>
                 </form>
 
-            </div>
         </div>
     </div>
+
 {#</div>#}
 {% endblock %}

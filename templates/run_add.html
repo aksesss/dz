@@ -14,14 +14,15 @@
 {% block body1 %}
 
 
-
-    <div class="col-lg-2 col-lg-offset-3">
+    <div class="container">
+        <div class="row">
+    <div class="col-lg-5 col-lg-offset-3">
         <div id = "headerwrap1">
             <h2>{{ main_text }}</h2>
             <br><br>
 
         <form action="" method="post">{% csrf_token %}
-            <h3>
+            <h3 class="right">
                 {{ form.as_p }}
             </h3>
 
@@ -29,15 +30,15 @@
                 <button type="submit" class="btn btn-primary">Добавить!!!!</button>
                 <br><br>
                 {% if result != '' %}
-                    <br>
                     <h1>
                         {% csrf_token %}
                         {{ result }}
-                        <br><br><br>
                     </h1>
                 {% endif %}
             </div>
         </form>
+        </div>
+        </div>
         </div>
     </div>
 

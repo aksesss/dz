@@ -70,7 +70,6 @@ class RunView(ListView):
     context_object_name = "runs"
     # queryset = ['id', 'date', 'time', 'place']
     paginate_by = 3
-    h = "hello"
 
     def get(self, request, *args, **kwargs):
 
@@ -111,17 +110,18 @@ def run_view(request):
             if not money:
                 money_error = 'Введите сумму ставки'
 
-            h = HorseInRun.objects.get(horse=horse_id, run=run_id)
             u = User.objects.get(id=request.user.id)
 
+            h = HorseInRun.objects.get(horse=horse_id, run=run_id)
             if money:
                 b = Bet(user=u, amount=money, horse_in_run=h)
                 b.save()
+                success = True
 
         return render(request, "run1.html", locals())
 
 
-def runAddView(request):
+def run_add_view(request):
     form = RunForm(request.POST or None, request.FILES or None)
 
     if request.method == 'POST':
@@ -131,7 +131,7 @@ def runAddView(request):
             # run_id = Run.objects.filter()
             # request.GET.pop(id,)
             instance.save()
-            return HttpResponseRedirect(reverse('run_url', args=(instance.pk,)))
+            return HttpResponseRedirect(reverse('runs_url'))
     return render(request, "run_add.html", locals())
 
 
