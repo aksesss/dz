@@ -1,0 +1,44 @@
+{%  extends 'base.html' %}
+
+{%  block head_buttons %}
+
+      <li><a href=''>Домой</a></li>
+      <li><a href=''>Инфо</a></li>
+      <li><a href=''>Товары</a></li>
+      <li><a href="#">Контакты</a></li>
+{#      <li><a href={% url "good_numb_url" 1%}><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>#}
+
+{% endblock %}
+
+
+{% block body1 %}
+
+
+
+    <div class="col-lg-2 col-lg-offset-3">
+        <div id = "headerwrap1">
+            <h2>{{ main_text }}</h2>
+            <br><br>
+
+        <form action="" method="post">{% csrf_token %}
+            <h3>
+                {{ form.as_p }}
+            </h3>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Добавить!!!!</button>
+                <br><br>
+                {% if result != '' %}
+                    <br>
+                    <h1>
+                        {% csrf_token %}
+                        {{ result }}
+                        <br><br><br>
+                    </h1>
+                {% endif %}
+            </div>
+        </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+@import "bootstrap.css";
+
+body{
+    background-color: #f2f2f2;
+    font-family: "Lato", serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+
+    margin-top: 70px;
+}
+
+h1, h2, h5, h6{
+    font-family: "Raleway", serif;
+    font-weight: 300;
+    color: #e70216;
+}
+
+h3{
+    font-family: "Arial", serif;
+    font-weight: bolder;
+    color: rgba(33, 166, 3, 0.58);
+
+    text-decoration: #0cfaff;
+}
+
+h4{
+    font-family: "Ebrima", serif;
+    font-weight: bolder;
+    color: rgba(59, 21, 255, 0.92);
+
+    text-decoration: #3b15ff;
+}
+
+
+
+p{
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+
+.centered{
+    text-align: center;
+}
+
+a{
+    color: #f85c37;
+}
+
+a:hover, a:focus{
+    color: #7b7b7b;
+    text-decoration: none;
+}
+
+hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top:1px solid #ccc;
+    margin:1em 0;
+    padding: 0;
+}
+
+.navbar{
+    font-weight: 800;
+    font-size: 14px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.navbar-inverse{
+    background: rgba(0, 0, 0, 0.58);
+    border-color: #fbff00;
+    border-bottom-style: ridge;
+}
+
+.navbar-inverse .navbar.nav > .active > a{
+    background-color: #ff7878;
+}
+
+.navbar-inverse .navbar-brand{
+    color: #999;
+    font-weight: bolder;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+{% load static %}
+
+
+#headerwrap1{
+    /*background: url(lg.jpg) no-repeat center top;*/
+    background: #e5fffd;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: right;
+    text-decoration: dotted;
+    background-origin: border-box;
+    backface-visibility: hidden;
+    background-position: center center;
+    min-height: 400px;
+    width: 100%;
+
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+
+}
+
+#headerwrap{
+    /*background: url(lg.jpg) no-repeat center top;*/
+    background: #e5fffd;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: right;
+    text-decoration: dotted;
+    background-origin: border-box;
+    backface-visibility: hidden;
+    background-position: center center;
+    min-height: 700px;
+    width: 100%;
+
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+
+}
+
+#header1 {
+    background: rgba(124, 255, 230, 0.53);
+    text-align: center;
+    padding-top: 15px;
+    min-height: 100px;
+
+}
+
+header1 h4{
+    color: deeppink;
+}
+
+
+table {
+    font-family: Rubik, serif;
+    border: 1px solid white;
+}
+
+th {
+    text-align: left;
+    border: 100px solid grey;
+    padding: 10px;
+}
+
+td {
+    text-align: left;
+    border: 1px solid grey;
+    padding: 5px;
+}
+
+table {
+  border-collapse: collapse;
+  line-height: 3;
+  font-family: "Lato", "Mistral", sans-serif;
+  background:  radial-gradient(farthest-corner at 50% 50%, #f3fff6, rgba(219, 248, 209, 0.7));
+  color: #0C213B;
+}
+
+th {
+  padding: 20px;
+  border: 1px solid #61e2e2;
+}
+
+td {
+  font-size: 0.8em;
+  padding: 5px 7px;
+  border: 1px solid #A9E2CC;
+}
+
+caption{
+    padding: 10px;
+    font-size: 30px;
+}

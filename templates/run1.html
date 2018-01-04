@@ -1,0 +1,84 @@
+{%  extends 'base.html' %}
+
+{%  block head_buttons %}
+
+      <li><a href=''>Инфо</a></li>
+      <li class="active"><a href=''>Лошади</a></li>
+      <li><a href="#">Контакты</a></li>
+
+{% endblock %}
+
+
+{% block body1 %}
+
+    <div class="container">
+        <div class="row">
+            {% if request.user.is_authenticated %}
+                <div class="col-lg-8 center">
+{#                        {% if horse.photo %}#}
+{#                            <img src="{{ horse.photo.url }}" width="30%" height="30%">#}
+{#                        {% endif %}#}
+                    <caption class="fa-3x"><a href={% url "runs_url" %}> К списку забегов  </a></caption>
+                    {% for run in runs %}
+                        <table>
+                            <h3>Забег номер {{ run.id }}</h3>
+                            <tr href="#" data-href-template="#" class="fa-2x">
+                                <th>Дата</th>
+                                <th>Время</th>
+                                <th>Место</th>
+                            </tr>
+
+                            <tr>
+                                <td>{{ run.date }}</td>
+                                <td>{{ run.time }}</td>
+                                <td>{{ run.place }}</td>
+                            </tr>
+                        </table>
+
+                        <h4>Лошади</h4>
+                        {% for horse in run.get_horses %}
+                              <h4>
+                                  <a class="active" href={% url "run_url" %}?id={{ run.id }}&horse={{ horse.id }}>
+                                      {{ horse.id }}        -     {{ horse.name }}     -     {{ horse.age }}
+                                  </a>
+                              </h4>
+                        {% endfor %}
+                    {% endfor %}
+
+                {% if horse_id != None %}
+                    <form method="POST">
+                         {% csrf_token %}
+
+                             <label>
+                                Сумма ставки <div class="h4"> {{ money_error }} </div>
+                             </label>
+
+                            <div class="form-block">
+                                <input type="text" name="money">
+                            </div>
+
+                    <button type="submit">Сделать ставку</button>
+                    </form>
+                {% endif %}
+
+                    <br>
+                </div>
+                        <div class="col-lg-offset-8">
+
+                        <div><h1>{{ horse_id }}</h1></div>
+                        </div>
+            {% endif %}
+                        <br><br>
+                        {% for user in horse.get_bet %}
+                            <h1>{{ h }}</h1>
+                        {% endfor %}
+        </div>
+    </div>
+{#                {% else %}#}
+{#                    <div class="col-lg-12 col-lg-offset-0">#}
+{#                        <h2>Чтобы просматривать таблицу, нужно авторизоваться</h2>#}
+{#                    </div>#}
+
+
+
+{% endblock %}

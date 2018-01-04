@@ -1,0 +1,22 @@
+{%  extends 'base.html' %}
+
+{%  block head_buttons %}
+
+      <li><a href={% url 'main_url' %}>Домой</a></li>
+      <li class="active"><a href="#">Инфо</a></li>
+      <li><a href={% url "goods_url" %}>Товары</a></li>
+      <li><a href="#"}>Контакты</a></li>
+      <li><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+{% endblock %}
+
+{%  block body1 %}
+                <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1>THIS IS INFORMATION</h1>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}
