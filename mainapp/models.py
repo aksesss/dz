@@ -39,6 +39,7 @@ class Run(models.Model):
     time = models.TimeField(verbose_name='Время')
     place = models.CharField(max_length=255, verbose_name='Место')
     horse = models.ManyToManyField(Horse, through='HorseInRun', through_fields=('run', 'horse'))
+    place_image = models.ImageField(null=True, blank=True, default=None, verbose_name='меcто')
 
     def __str__(self):
         return '%s ___ %s  ___   %s' % (str(self.id), str(self.date), str(self.time))

@@ -5,6 +5,7 @@ from .models import *
 
 
 class RunForm(ModelForm):
+
     class Meta:
         model = Run
         exclude = ['horse']

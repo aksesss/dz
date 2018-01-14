@@ -23,6 +23,6 @@ class RegistrationForm(forms.Form):
             self.add_error('username','Такой пользователь уже существует')
             b = False
         if self.errors.get('email'):
-            self.add_error('email','Введите корректный email')
+            self.errors['email'] = ['Введите корректный email']
             b = False
         return b

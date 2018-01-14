@@ -2,60 +2,56 @@
 
 {%  block head_buttons %}
 
-      <li><a href=''>Инфо</a></li>
-      <li class="active"><a href=''>Лошади</a></li>
-      <li><a href="#">Контакты</a></li>
 
+{#        <li id="liter">{{ u.cash }}</li>#}
 {% endblock %}
 
 
 {% block body1 %}
-    {% if success %}
-        <script>
-            alert('Добавил бро')
-        </script>
-    {%  endif %}
+
 
     <div class="container">
         <div class="row">
         <br><br>
             {% if request.user.is_authenticated %}
-                <div class="col-xs-1">
+                <div class="col-lg-1">
                     <a href={% url "runs_url" %}>
                         <div class="fa fa-arrow-circle-left"></div>
                     </a>
 
                 </div>
 
-                <div class="col-xs-8 center">
+                <div class="col-lg-8">
 {#                        {% if horse.photo %}#}
 {#                            <img src="{{ horse.photo.url }}" width="30%" height="30%">#}
-{#                        {% endif %}#}
+
 {#                    <caption class="fa-3x"><a href={% url "runs_url" %}> К списку забегов  </a></caption>#}
                     {% for run in runs %}
                         <table>
                             <caption class="centered"><h3>Забег номер {{ run.id }}</h3></caption>
-                            <tr class="fa-2x">
+                            <tr>
                                 <th>Дата</th>
                                 <th>Время</th>
                                 <th>Место</th>
                             </tr>
 
-                            <tr class="fa-2x">
-                                <td>{{ run.date }}</td>
-                                <td>{{ run.time }}</td>
-                                <td>{{ run.place }}</td>
+                            <tr>
+                                <td><h4>{{ run.date }}</h4></td>
+                                <td><h4>{{ run.time }}</h4></td>
+                                <td><h4>{{ run.place }}</h4></td>
                             </tr>
                         </table>
-
-                        <div class="fa-2x">Участники: </div>
-                        {% for horse in run.get_horses %}
-                              <h4>
-                                  <a  href={% url "run_url" %}?id={{ run.id }}&horse={{ horse.id }}>
-                                      {{ horse.id }}        -     {{ horse.name }}     -     {{ horse.age }} Лет
-                                  </a>
-                              </h4>
-                        {% endfor %}
+                </div>
+                <div class="col-lg-3">
+                            <div>Участники: </div>
+                            {% for horse in run.get_horses %}
+                                  <h4>
+                                      <a  href={% url "run_url" %}?id={{ run.id }}&horse={{ horse.id }}>
+                                          {{ horse.id }}        -     {{ horse.name }}     -     {{ horse.age }} Лет
+                                      </a>
+                                  </h4>
+                            {% endfor %}
+                </div>
                     {% endfor %}
 
                 {% if horse_id != None %}
@@ -76,15 +72,8 @@
 
                     <br>
                 </div>
-                        <div class="col-lg-offset-8">
+           {% endif %}
 
-                        <div><h1>{{ horse_id }}</h1></div>
-                        </div>
-            {% endif %}
-                        <br><br>
-                        {% for user in horse.get_bet %}
-                            <h1>{{ h }}</h1>
-                        {% endfor %}
         </div>
     </div>
 {#                {% else %}#}

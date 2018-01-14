@@ -19,7 +19,7 @@ class RunAdmin(admin.ModelAdmin):
 
     fieldsets = [
         ('Дата забега',     {'fields': ['date', 'time']}),
-        ('Место забега',    {'fields': ['place']}),
+        ('Место забега',    {'fields': ['place', 'place_image']}),
     ]
 
     # list_filter = ["good_id"]                                                            # Фильтр по поляи

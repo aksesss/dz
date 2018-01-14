@@ -2,9 +2,10 @@
 
 {%  block head_buttons %}
 
-      <li><a href="">Домой</a></li>
-      <li><a href="">Инфо</a></li>
-      <li><a href="#">Контакты</a></li>
+    {% if request.user.is_staff %}
+        <li><a href={% url "run_add_url" %}>Добавить забег</a></li>
+        <li><a href="">Лошади</a></li>
+    {% endif %}
 {#      <li><a href={% url "good_numb_url" 1%}><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>#}
 
 {% endblock %}
@@ -15,26 +16,30 @@
         <div class="container">
             <div class="row">
                 {% if request.user.is_authenticated %}
-                    <div class="col-xs-6 col-xs-offset-0 centered">
+                    <div class="col-lg-12">
                         <table>
 
-                            <caption class="fa-3x centered"><a href={% url "runs_url" %}> Забеги  </a></caption>
+                            <caption class="fa-5x centered"><a href={% url "runs_url" %}> Забеги  </a></caption>
 
                             <tr>
                                 <th>Номер</th>
                                 <th>Дата</th>
                                 <th>Время</th>
                                 <th>Место</th>
+                                <th>Фото</th>
                             </tr>
 
                             {% for run in runs %}
                                 <tr>
-                                <a href={% url "run_url"%}?id={{ run.id }} >  {{ run.id }}
                                     <td><h4><a href={% url "run_url"%}?id={{ run.id }} >  {{ run.id }}  </a> </h4> </td>
                                     <td><h4><a href={% url "run_url"%}?id={{ run.id }} >  {{ run.date }}</a></h4></td>
                                     <td><h4><a href={% url "run_url"%}?id={{ run.id }} >  {{ run.time }}</a></h4></td>
                                     <td><h4><a href={% url "run_url"%}?id={{ run.id }} >  {{ run.place }}</a></h4></td>
-                                </a>
+                                    <td>
+                                    {% if run.place_image %}
+                                        <img src="{{ run.place_image.url }}" width="30%" height="30%">
+                                    {% endif %}
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </table>
@@ -69,9 +74,17 @@
                         <button>Add</button>
                     </a>
 
+                     <form action="" method="post">{% csrf_token %}
+                    <h3 class="right">
+                        {{ form_class.as_p }}
+                    </h3>
+                     </form>
+
+
+
                     <a href="#course-add-modal" data-toggle="modal">
                                 <div class="add-button">WWWWWWWWWWWWWWWWWWWWW</div>
-                            </a>
+                    </a>
 
                     </div>
 
@@ -83,24 +96,31 @@
 
 
         <div id="course-add-modal" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h2 class="modal-title">Добавление нового забега</h2>
-              </div>
-                {{ form.form }}
-              <div class="modal-body">
-                  <form method= "POST" enctype="multipart/form-data">
-                    <div class="add-form container">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                    </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-              </div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h2 class="modal-title">Добавление нового забега</h2>
+                    </div>
+
+                    <div class="modal-body">
+                        <form method= "POST" enctype="multipart/form-data">
+                            <div class="add-form container">
+                                <div class="">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                </div>
+                                <button type="submit" class="btn btn-primary">Добавить!!!!</button>
+                                <br><br>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
 {% endblock %}

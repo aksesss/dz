@@ -1,36 +1,76 @@
 {%  extends 'base.html' %}
 
 {%  block head_buttons %}
-
-      <li><a href="">Домой</a></li>
-      <li><a href="">Инфо</a></li>
-      <li><a href="#">Контакты</a></li>
-{#      <li><a href={% url "good_numb_url" 1%}><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>#}
-
+    {% if request.user.is_staff %}
+        <li><a href={% url "run_add_url" %}>Добавить забег</a></li>
+        <li><a href="">Лошади</a></li>
+    {% endif %}
 {% endblock %}
 
 
 {% block body1 %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 centered">
 
-     <div class="infinite-container">
-        {% for article in runs %}
-              <div class="infinite-item">
-                <h3>{{ article.id }}</h3>
-                <p>
-                  <small>{{ article.date }} </small>
-                </p>
-              </div>
-        {% endfor %}
-      </div>
+                <h2><a href={% url "runs_url" %}> Забеги  </a></h2>
 
-      <div class="loading" style="display: none;">
+                    {% for run in runs %}
+        <div class="infinite-container">
+            <div class="infinite-item">
+                {#                    <h3>{{ run.id }}</h3>#}
+                {#                    <p>#}
+                {#                      <small>{{ run.date }} </small>#}
+                {#                    </p>#}
+
+                {#                     <tr>#}
+
+                <a href={% url "run_url"%}?id={{ run.id }} >
+                    <button>
+                        {% if run.place_image.url != None %}
+                            <img alt="None" src="{{ run.place_image.url }}" width=500px height=200px>
+                        {% endif %}
+                        <h4><small> Забег номер: {{ run.id }}     </small></h4>
+                        <h4><small> {{ run.date }}  </small></h4>
+                        <h4><small> {{ run.time }}  </small></h4>
+                        <h4><small> {{ run.place }} </small></h4>
+                    </button>
+                </a>
+                <br><br><br>
+                {#                    </tr>#}
+            </div>
+        </div>
+    {% endfor %}
+
+
+
+
+    <div class="loading" style="display: none;">
         Loading...
-      </div>
+    </div>
 
-      {% if page_obj.has_next %}
-          <h1>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</h1>
+    {% if page_obj.has_next %}
         <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
-      {% endif %}
+    {% endif %}
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+{#    <tr>#}
+{#        <th>Номер</th>#}
+{#        <th>Дата</th>#}
+{#        <th>Время</th>#}
+{#        <th>Место</th>#}
+{#    </tr>#}
+
+
+
+
 
   <script>
     var infinite = new Waypoint.Infinite({

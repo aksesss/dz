@@ -8,7 +8,6 @@ from django.http import HttpResponseRedirect
 from .forms import *
 
 
-# Create your views here.
 class LoginFormView(FormView):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -17,25 +16,20 @@ class LoginFormView(FormView):
             return super(LoginFormView,self).get(self, request)
 
     form_class = AuthenticationForm
-
-    # Аналогично регистрации, только используем шаблон аутентификации.
     template_name = "login.html"
 
-    # В случае успеха перенаправим на главную.
     success_url = "/login"
 
     def form_valid(self, form):
-        # Получаем объект пользователя на основе введённых в форму данных.
         self.user = form.get_user()
-
-        # Выполняем аутентификацию пользователя.
         login(self.request, self.user)
+
         return super(LoginFormView, self).form_valid(form)
 
 
 def registration(request):
     form = RegistrationForm(request.POST or None)
-    password_error = ''
+#    password_error = ''
     if request.method == 'POST':
         if form.is_valid():
             user = User.objects.create_user(username=form.cleaned_data['username'],

@@ -1,18 +1,52 @@
 {%  extends 'base.html' %}
 
+{% block scripts %}
+    <script>
+        function Validate(obj) {
+            var date=obj.date.value.split('-');
+            var time=obj.time.value.split(':');
+            var errors="";
+
+            if (!(date[0]<10000 && date[1]<24 && date[2]<32)) {
+                errors+="Указана неверная дата рождения[гггг-мм-дд]!!\n";
+            }
+
+            if (!(time[0]< 24 && time[1]<60)){
+                errors+="Неверное время\n"
+            }
+
+            if(errors==="")
+                return true;
+
+           else {
+                alert(errors);
+                return false;
+            }
+        }
+
+    </script>
+
+
+    <script>
+        var form = document.querySelector('.formWithValidation');
+        var validateBtn = form.querySelector('.validateBtn');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault()
+        })
+    </script>
+{% endblock %}
+
 {%  block head_buttons %}
 
-      <li><a href=''>Домой</a></li>
-      <li><a href=''>Инфо</a></li>
-      <li><a href=''>Товары</a></li>
-      <li><a href="#">Контакты</a></li>
+      <li><a href={% url "runs_url" %}>К забегам</a></li>
+      <li><a href={% url "runs1_url" %}>К забегам1</a></li>
 {#      <li><a href={% url "good_numb_url" 1%}><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>#}
 
 {% endblock %}
 
 
 {% block body1 %}
-
 
     <div class="container">
         <div class="row">
@@ -21,20 +55,20 @@
             <h2>{{ main_text }}</h2>
             <br><br>
 
-        <form action="" method="post">{% csrf_token %}
+        <form OnSubmit='return Validate(this);' action="" method="post" class="formWithValidation">{% csrf_token %}
             <h3 class="right">
                 {{ form.as_p }}
             </h3>
 
             <div>
-                <button type="submit" class="btn btn-primary">Добавить!!!!</button>
+                <button type="submit" class="btn btn-primary validateBtn">Добавить!!!!</button>
                 <br><br>
-                {% if result != '' %}
-                    <h1>
-                        {% csrf_token %}
-                        {{ result }}
-                    </h1>
-                {% endif %}
+{#                {% if result != '' %}#}
+{#                    <h1>#}
+{#                        {% csrf_token %}#}
+{#                        {{ result }}#}
+{#                    </h1>#}
+{#                {% endif %}#}
             </div>
         </form>
         </div>

@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% block scripts %}{% endblock %}
     <meta charset="UTF-8">
     {% load static %}
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src={% static "Bootstrap/js/bootstrap.min.js" %}></script>
+    <script src="{% static 'Bootstrap/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'Bootstrap/js/infinite.min.js' %}"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
@@ -32,6 +39,7 @@
                     <li>
                             <a href="{% url 'logout_url' %}">Выйти ( {{ request.user.username }} )</a>
                     </li>
+                    <li>{{ request.user.cash }}</li>
                 {% else %}
                     <li>  <a href="{% url 'login_url' %}">Вход</a>  </li>
                     <li>      <a href="{% url 'registration_url' %}">Регистрация</a>
