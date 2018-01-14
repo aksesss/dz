@@ -4,123 +4,103 @@
 
     {% if request.user.is_staff %}
         <li><a href={% url "run_add_url" %}>Добавить забег</a></li>
+        <li><a href="#course-add-modal" data-toggle="modal">
+            <div class="add-button">+</div>
+        </a></li>
         <li><a href="">Лошади</a></li>
     {% endif %}
-{#      <li><a href={% url "good_numb_url" 1%}><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>#}
 
 {% endblock %}
 
 
 {% block body1 %}
 
-        <div class="container">
-            <div class="row">
-                {% if request.user.is_authenticated %}
-                    <div class="col-lg-12">
-                        <table>
+<div class="container">
+    <div class="row">
+        {% if request.user.is_authenticated %}
+            <div class="col-lg-12">
+                <table>
 
-                            <caption class="fa-5x centered"><a href={% url "runs_url" %}> Забеги  </a></caption>
+                    <caption class="fa-5x centered"><a href={% url "runs1_url" %}> Забеги  </a></caption>
 
-                            <tr>
-                                <th>Номер</th>
-                                <th>Дата</th>
-                                <th>Время</th>
-                                <th>Место</th>
-                                <th>Фото</th>
-                            </tr>
+                    <tr>
+                        <th>Номер</th>
+                        <th>Дата</th>
+                        <th>Время</th>
+                        <th>Место</th>
+                        <th>Фото</th>
+                    </tr>
 
-                            {% for run in runs %}
-                                <tr>
-                                    <td><h4><a href={% url "run_url"%}?id={{ run.id }} >  {{ run.id }}  </a> </h4> </td>
-                                    <td><h4><a href={% url "run_url"%}?id={{ run.id }} >  {{ run.date }}</a></h4></td>
-                                    <td><h4><a href={% url "run_url"%}?id={{ run.id }} >  {{ run.time }}</a></h4></td>
-                                    <td><h4><a href={% url "run_url"%}?id={{ run.id }} >  {{ run.place }}</a></h4></td>
-                                    <td>
-                                    {% if run.place_image %}
-                                        <img src="{{ run.place_image.url }}" width="30%" height="30%">
-                                    {% endif %}
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        </table>
-                            <span class="page-links">
-                            {% if page_obj.has_previous %}
-                                <a class="aquo" href="/runs?page={{ page_obj.previous_page_number }}">&laquo;</a>
-                            {% else %}
-                                <span class="unavailable" href="">&laquo;</span>
+                    {% for run in runs %}
+                        <tr>
+                            <td><h4><a href={% url "runs_url"%}?id={{ run.id }} >  {{ run.id }}  </a> </h4> </td>
+                            <td><h4><a href={% url "runs_url"%}?id={{ run.id }} >  {{ run.date }}</a></h4></td>
+                            <td><h4><a href={% url "runs_url"%}?id={{ run.id }} >  {{ run.time }}</a></h4></td>
+                            <td><h4><a href={% url "runs_url"%}?id={{ run.id }} >  {{ run.place }}</a></h4></td>
+                            <td>
+                            {% if run.place_image %}
+                                <img src="{{ run.place_image.url }}" href={% url "runs_url"%}?id={{ run.id }} width="30%" height="30%">
                             {% endif %}
-                            {% for page in page_obj.paginator.page_range%}
-                                {% if page %}
-                                    {% ifequal page page_obj.number %}
-                                        <span class="current-page" href="">{{ page }}</span>
-                                    {% else %}
-                                        <a href="/runs?page={{ page }}" class="page">{{ page }}</a>
-                                    {% endifequal %}
-                                {% endif %}
-                            {% endfor %}
-                            {% if page_obj.has_next %}
-                                <a class="aquo" href="/runs?page={{ page_obj.next_page_number }}">&raquo;</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                    <span class="page-links">
+                    {% if page_obj.has_previous %}
+                        <a class="aquo" href="/runs?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                    {% else %}
+                        <span class="unavailable" href="">&laquo;</span>
+                    {% endif %}
+
+                    {% for page in page_obj.paginator.page_range%}
+                        {% if page %}
+                            {% ifequal page page_obj.number %}
+                                <span class="current-page" href="">{{ page }}</span>
                             {% else %}
-                                <span class="unavailable" href="">&raquo;</span>
-                            {% endif %}
-                            <span hidden id="per-page">{{ page_obj.paginator.per_page }}</span>
-                        </span>
+                                <a href="/runs?page={{ page }}" class="page">{{ page }}</a>
+                            {% endifequal %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <a class="aquo" href="/runs?page={{ page_obj.next_page_number }}">&raquo;</a>
+                    {% else %}
+                        <span class="unavailable" href="">&raquo;</span>
+                    {% endif %}
+                    <span hidden id="per-page">{{ page_obj.paginator.per_page }}</span>
+                </span>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+
+<div id="course-add-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="modal-title">Добавление нового забега</h2>
+            </div>
+
+            <div class="modal-body">
+                <form method= "POST" enctype="multipart/form-data">
+                    <div class="add-form container">
+                        <div class="">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Добавить!!!!</button>
+                        <br><br>
                     </div>
-                {% if request.user.is_staff %}
-                    <div class="col-xs-3">
+                </form>
+            </div>
 
-                    <br><br><br>
-                    <a href={% url "run_add_url" %}>
-                        <button>Add</button>
-                    </a>
-
-                     <form action="" method="post">{% csrf_token %}
-                    <h3 class="right">
-                        {{ form_class.as_p }}
-                    </h3>
-                     </form>
-
-
-
-                    <a href="#course-add-modal" data-toggle="modal">
-                                <div class="add-button">WWWWWWWWWWWWWWWWWWWWW</div>
-                    </a>
-
-                    </div>
-
-                {% endif %}
-
-                {% endif %}
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
             </div>
         </div>
-
-
-        <div id="course-add-modal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h2 class="modal-title">Добавление нового забега</h2>
-                    </div>
-
-                    <div class="modal-body">
-                        <form method= "POST" enctype="multipart/form-data">
-                            <div class="add-form container">
-                                <div class="">
-                                    {% csrf_token %}
-                                    {{ form.as_p }}
-                                </div>
-                                <button type="submit" class="btn btn-primary">Добавить!!!!</button>
-                                <br><br>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+</div>
 {% endblock %}

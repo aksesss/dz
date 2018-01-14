@@ -1,0 +1,86 @@
+{%  extends 'base.html' %}
+
+{%  block head_buttons %}
+
+      <li><a href=''>Домой</a></li>
+      <li><a href=''>Инфо</a></li>
+      <li class="active"><a href=''>Лошади</a></li>
+      <li><a href="#">Контакты</a></li>
+{#      <li><a href={% url "good_numb_url" 1%}><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>#}
+
+{% endblock %}
+
+
+{% block body1 %}
+
+        <div class="container">
+            <div class="row">
+                {% if request.user.is_authenticated %}
+                    <div class="col-lg-8 center">
+{#                        {% if horse.photo %}#}
+{#                            <img src="{{ horse.photo.url }}" width="30%" height="30%">#}
+{#                        {% endif %}#}
+                        <caption class="fa-3x"><a href={% url "runs_url" %}> К списку забегов  </a></caption>
+
+                        <table>
+                      {% for run in runs %}
+                            <h3>Забег номер {{ run.id }}</h3>
+
+                            <tr href="#" data-href-template="#" class="fa-2x">
+                                <th>Дата</th>
+                                <th>Время</th>
+                                <th>Место</th>
+
+
+
+
+                            </tr>
+
+                                <tr>
+                                    <td>{{ run.date }}</td>
+                                    <td>{{ run.time }}</td>
+                                    <td>{{ run.id }}</td>
+
+                                </tr>
+
+
+
+
+    {#                        <div class="col-lg-2 col-lg-offset-7">#}
+    {#                            <h2>#}
+    {#                                <a href={% url "goods_add_url" %}>Добавить лошадь</a>#}
+    {#                            </h2>#}
+    {#                        </div>#}
+                        </table>
+                          <h4>Лошади</h4>
+                        {% for horse in run.get_horses %}
+
+                          <h4><a href={% url "runs_url" %}?id={{ run.id }}&horse={{ horse.id }}>
+                                {{ horse.id }}        -     {{ horse.name }}     -     {{ horse.age }}
+                              </a>
+                          </h4>
+
+                        {% endfor %}
+
+                      {% endfor %}
+                    </div>
+                    <div class="col-lg-5 col-lg-offset-8">
+
+                    <div><h1>{{ horse_id }}</h1></div>
+
+            {% endif %}
+
+                        <br><br>
+                        {% for user in horse.get_bet %}
+                            <h1>{{ h }}</h1>
+                        {% endfor %}
+                    </div>
+
+{#                {% else %}#}
+{#                    <div class="col-lg-12 col-lg-offset-0">#}
+{#                        <h2>Чтобы просматривать таблицу, нужно авторизоваться</h2>#}
+{#                    </div>#}
+
+
+        </div>
+{% endblock %}

@@ -35,16 +35,25 @@
 
 
                 {% block head_buttons %}{% endblock %}
-                {% if request.user.is_authenticated %}
-                    <li>
-                            <a href="{% url 'logout_url' %}">Выйти ( {{ request.user.username }} )</a>
-                    </li>
-                    <li>{{ request.user.cash }}</li>
-                {% else %}
-                    <li>  <a href="{% url 'login_url' %}">Вход</a>  </li>
-                    <li>      <a href="{% url 'registration_url' %}">Регистрация</a>
-                    </li>
-                {% endif %}
+<li>
+                    <div class="dropdown">
+                            <button class="dropdown-toggle" data-toggle="dropdown">
+{#                                <img src="" width="30" height="30" alt=""/>#}
+                                    <i class="fa fa-user"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                {% if request.user.is_authenticated %}
+                                    <span>Здравствуйте, {{ request.user.username }}</span>
+                                    <a href="{% url 'logout_url' %}">Выйти</a>
+                                {% else %}
+                                    <a href="{% url 'login_url' %}">Вход</a>
+
+                                    <a href="{% url 'registration_url' %}">Регистрация</a>
+                                {% endif %}
+                            </div>
+                    </div>
+</li>
+    {#                {% endif %}#}
 
             </ul>
       </div>
