@@ -195,8 +195,66 @@ caption{
     padding-right: 150px;
 	max-width: 600px;
 	margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 1px;
 	padding-bottom: 20px;
 	box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.3);
 	border-bottom: 5px solid #ffdb3a;
+}
+
+.dropdown-toggle {
+    margin: 7px;
+    background-color: inherit;
+    border: none;
+}
+
+.dropdown-content {
+    width: 150px;
+    background-color: #444444;
+    border: none;
+    border-radius: 10px;
+    top: 100%;
+    display: none;
+    position: absolute;
+    margin-left: -100px;
+    margin-top: -20px;
+    font-size: 15px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+}
+
+.dropdown-content a {
+    color: grey;
+    display: inline-block;
+    padding: 5px;
+    margin: 10px;
+}
+
+.dropdown-content a:hover {
+    background-color: inherit;
+    color: white;
+    font-size: 17px;
+    padding: 3px;
+    padding-bottom: 4px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: inline-block;
+    border-color: #999999;
+    background-color: black;
+}
+
+.dropdown-content p {
+    margin-left: 25px;
+    margin-right: 25px;
+    display: inline-block;
+    text-align: center;
+    color: #f2f2f2;
+}
+
+.dropdown-content span {
+    padding: 2px;
+    margin-left: 15px;
+    margin-right: 25px;
+    display: inline-block;
+    text-align: center;
+    color: white;
 }
