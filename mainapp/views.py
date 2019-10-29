@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core import serializers
 from django.views.generic import ListView, View, FormView
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import *
 from .forms import *

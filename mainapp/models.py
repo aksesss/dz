@@ -23,7 +23,7 @@ class Horse(models.Model):
     name = models.CharField(max_length=100, unique=True, null=False, verbose_name='Имя')
     age = models.IntegerField(null=False, verbose_name='Возраст')
     photo = models.ImageField(null=True, blank=True, default=None, verbose_name='Фото')
-    jockey = models.ForeignKey(Jockey, verbose_name='Жокей', default=None)
+    jockey = models.ForeignKey(Jockey, verbose_name='Жокей', default=None, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.id) + " _  " + self.name
@@ -60,8 +60,8 @@ class HorseInRun(models.Model):
 
 
 class Bet(models.Model):
-    horse_in_run = models.ForeignKey(HorseInRun, verbose_name='Ставка на лошадь')
-    user = models.ForeignKey(User, verbose_name='Пользователь')
+    horse_in_run = models.ForeignKey(HorseInRun, verbose_name='Ставка на лошадь', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Ставка')
 
     def __str__(self):

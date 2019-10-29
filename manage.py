@@ -15,7 +15,8 @@ if __name__ == "__main__":
         except ImportError:
             raise ImportError(
                 "Couldn't import Django. Are you sure it's installed and "
-                "available on your PYTHONPATH environment variable? Did you "
+                "available on your PYTHONPATH environment v"
+                "ariable? Did you "
                 "forget to activate a virtual environment?"
             )
         raise

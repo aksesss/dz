@@ -77,6 +77,14 @@ WSGI_APPLICATION = 'dz.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
+}
+
+'''
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sweepstake1',
         'USER': 'root',
@@ -86,7 +94,7 @@ DATABASES = {
         'TEST_CHARSET': 'utf8',
     }
 }
-
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

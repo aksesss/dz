@@ -3,7 +3,7 @@ from django.contrib.auth import login, logout
 from django.views.generic.edit import View, FormView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponseRedirect
 from .forms import *
 
