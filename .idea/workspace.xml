@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bf292c7-5717-48ee-9879-c89ade321780" name="Default" comment="version">
+      <change afterPath="$PROJECT_DIR$/authorisation/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dz.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorisation/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/authorisation/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authorisation/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authorisation/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dz/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/dz/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dz/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dz/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mydatabase" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/runs_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/runs_list.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,30 +21,29 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>run_v</find>
-      <find>`</find>
-      <find>Enter a va</find>
-      <find>Enter a valid email</find>
-      <find>email</find>
-      <find>&lt;a</find>
-      <find>im</find>
-      <find>enter a va</find>
-      <find>time</find>
-      <find>add</find>
-      <find>p</find>
-      <find>post</find>
-      <find>conta</find>
-      <find>run</find>
-      <find>run_</find>
-      <find>run</find>
-      <find>drop</find>
-      <find>displ</find>
-    </findStrings>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,7 +53,7 @@
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="main&#9;FILE&#9;file://E:/prog/pythonprog/dz/mainapp/static/Bootstrap/css/main.css&#10;vie&#9;FILE&#9;file://E:/prog/pythonprog/dz/mainapp/views.py&#10;runa&#9;FILE&#9;file://E:/prog/pythonprog/dz/templates/run_add.html&#10;base&#9;FILE&#9;file://E:/prog/pythonprog/dz/templates/base.html&#10;models&#9;FILE&#9;file://E:/prog/pythonprog/dz/mainapp/models.py&#10;mai&#9;FILE&#9;file://E:/prog/pythonprog/dz/mainapp/static/Bootstrap/css/main.css&#10;run&#9;FILE&#9;file://E:/prog/pythonprog/dz/templates/run.html&#10;views&#9;FILE&#9;file://E:/prog/pythonprog/dz/authorisation/views.py&#10;viev&#9;null&#9;null&#10;url&#9;FILE&#9;file://E:/prog/pythonprog/dz/mainapp/urls.py&#10;runs&#9;FILE&#9;file://E:/prog/pythonprog/dz/templates/runs_list.html&#10;vi&#9;FILE&#9;file://E:/prog/pythonprog/dz/mainapp/views.py&#10;se&#9;FILE&#9;file://E:/prog/pythonprog/dz/dz/settings.py&#10;sett&#9;FILE&#9;file://E:/prog/pythonprog/dz/dz/settings.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../python-virtual-environments/DJVENV" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -109,7 +111,14 @@
       <option name="presentableId" value="Default" />
       <updated>1515056358354</updated>
       <workItem from="1572304382467" duration="1899000" />
-      <workItem from="1572343735653" duration="1913000" />
+      <workItem from="1572343735653" duration="4695000" />
+      <workItem from="1572599388336" duration="5706000" />
+      <workItem from="1573854021143" duration="2404000" />
+      <workItem from="1574505016427" duration="150000" />
+      <workItem from="1575583000352" duration="1160000" />
+      <workItem from="1576022292965" duration="699000" />
+      <workItem from="1576084493518" duration="147000" />
+      <workItem from="1576406689197" duration="9455000" />
     </task>
     <task id="LOCAL-00001" summary="infinite scroll">
       <created>1515416496833</created>
@@ -137,6 +146,19 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="infinite scroll" />

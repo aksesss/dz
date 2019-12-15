@@ -1,7 +1,11 @@
 from django.db import models
 from django.db.models import Q
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+#from django.contrib.auth.models import AbstractUser
+from authorisation.models import MyUser
 from datetime import *
+#from dz.settings import AUTH_USER_MODEL
+from django.conf import settings
 
 
 class Jockey(models.Model):
@@ -53,7 +57,7 @@ class Run(models.Model):
 class HorseInRun(models.Model):
     horse = models.ForeignKey(Horse, on_delete=models.CASCADE, verbose_name='Лошадь')
     run = models.ForeignKey(Run, on_delete=models.CASCADE, verbose_name='Забег')
-    user = models.ManyToManyField(User, through='Bet', through_fields=('horse_in_run', 'user'))
+    user = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Bet', through_fields=('horse_in_run', 'user'))
 
     def __str__(self):
         return '%s %s' % (str(self.run.date), str(self.horse.name))
@@ -61,8 +65,10 @@ class HorseInRun(models.Model):
 
 class Bet(models.Model):
     horse_in_run = models.ForeignKey(HorseInRun, verbose_name='Ставка на лошадь', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Ставка')
 
     def __str__(self):
         return '%s %s: %s' % (str(self.user.username), str(self.horse_in_run.run.id), str(self.horse_in_run.horse.name))
+
+

@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth import login, logout
 from django.views.generic.edit import View, FormView
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from authorisation.models import MyUser
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from .forms import *
@@ -32,14 +33,13 @@ def registration(request):
 #    password_error = ''
     if request.method == 'POST':
         if form.is_valid():
-            user = User.objects.create_user(username=form.cleaned_data['username'],
+            user = MyUser.objects.create_user(username=form.cleaned_data['username'],
                                             email=form.cleaned_data['email'],
                                             password=form.cleaned_data['password'],
                                             first_name=form.cleaned_data['firstname'],
                                             last_name=form.cleaned_data['surname'])
             # ...
             return HttpResponseRedirect(reverse("login_url"))
-
 
     return render(request, 'registration.html', {'form': form}, locals())
 

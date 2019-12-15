@@ -1,5 +1,6 @@
 from django import forms
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from authorisation.models import MyUser
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -19,7 +20,7 @@ class RegistrationForm(forms.Form):
         if self.cleaned_data['password'] != self.cleaned_data['password2']:
             self.add_error('password', 'Пароли не совпадают')
             b = False
-        if User.objects.filter(username=self.cleaned_data['username']).exists():
+        if MyUser.objects.filter(username=self.cleaned_data['username']).exists():
             self.add_error('username','Такой пользователь уже существует')
             b = False
         if self.errors.get('email'):

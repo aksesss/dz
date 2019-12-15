@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.core import serializers
 from django.views.generic import ListView, View, FormView
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from .models import MyUser
 from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import *
@@ -45,7 +46,7 @@ class RunView(ListView):
             return super(RunView, self).get(request)
         else:
             runs = Run.objects.filter(id=run_id)
-            u = User.objects.get(id=request.user.id)
+            u = MyUser.objects.get(id=request.user.id)
             h = HorseInRun.objects.get(horse=request.GET.get('horse'), run=run_id)
 
             money = request.POST.get('money')
